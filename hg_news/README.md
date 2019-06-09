@@ -1,8 +1,8 @@
 # Banner
-基于jquery点击轮播
+新闻展示 js插件
 
 录屏:
-![](https://github.com/conesat/Banner/blob/master/rec/REC.gif)
+![](https://github.com/conesat/JS_Project/blob/master/hg_news/rec/REC.gif)
 
 使用示例:
 ```JavaScript
