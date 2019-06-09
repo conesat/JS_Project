@@ -23,25 +23,25 @@
 			$(function() {
 				var items = new Array();
 				items[0] = {
-					'bgUrl':'img/bg/bg1.jpg',
+					'imgUrl':'img/bg/bg1.jpg',
 					'url':'http://www.baidu.com',
 					'title': '新年致辞',
 					'content': '时序更迭，华章日新。2018年即将过去，充满希望的2019年正向我们走来。'
 				};
 				items[1] = {
-					'bgUrl':'img/bg/bg1.jpg',
+					'imgUrl':'img/bg/bg1.jpg',
 					'url':'',
 					'title': '新年致辞',
 					'content': '时序更迭，华章日新。2018年即将过去，充满希望的2019年正向我们走来。'
 				};
 				items[2] = {
-					'bgUrl':'img/bg/bg2.jpg',
+					'imgUrl':'img/bg/bg2.jpg',
 					'url':'',
 					'title': '新年致辞',
 					'content': '时序更迭，华章日新。2018年即将过去，充满希望的2019年正向我们走来。'
 				};
 				items[3] = {
-					'bgUrl':'img/bg/bg1.jpg',
+					'imgUrl':'img/bg/bg1.jpg',
 					'url':'',
 					'title': '新年致辞',
 					'content': '时序更迭，华章日新。2018年即将过去，充满希望的2019年正向我们走来。'
