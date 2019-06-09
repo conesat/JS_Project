@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta content="width=device-width,user-scalable=no" name="viewport">
+		<style>
+			/* p{
+				margin: 10px;
+			} */
+		</style>
+
+	</head>
+	<body>
+		<div id="hg-dialog"></div>
+		<div style="float: left;margin-right: 20px;">
+			<label for="closeStyle">closeStyle</label>
+			<select id="closeStyle">
+				<option value="normal">normal</option>
+				<option value="bottom">bottom</option>
+				<option value="button">button</option>
+			</select>
+			<p></p>
+			<label for="type">type</label>
+			<select id="type">
+				<option value="show">show</option>
+				<option value="line-input">line-input</option>
+				<option value="lines-input">lines-input</option>
+			</select>
+			<p></p>
+			<label for="outerHide">outerHide</label>
+			<select id="outerHide">
+				<option value="false">false</option>
+				<option value="true">true</option>
+			</select>
+			<p></p>
+			<label for="width">width</label>
+			<input id="width" placeholder="auto" />
+			<p></p>
+			<label for="height">height</label>
+			<input id="height" placeholder="auto" />
+			<p></p>
+			<label for="title">title</label>
+			<input id="title" value="警告" />
+			<p></p>
+			<label for="showText">showText</label>
+			<input id="showText" value="这是一条最新消息" />
+			<p></p>
+			<label for="okText">okText</label>
+			<input id="okText" value="确定" />
+			<p></p>
+			<label for="cancelText">cancelText</label>
+			<input id="cancelText" value="取消" />
+			<p></p>
+			<button onclick="dialog()">dialog</button>
+		</div>
+		<div style="float: left;">
+			<label for="noticTitle">title</label>
+			<input id="noticTitle" value="消息" />
+			<p></p>
+			<label for="noticShowText">showText</label>
+			<input id="noticShowText" value="这是一条最新消息" />
+			<p></p>
+			<label for="footer">footer</label>
+			<input id="footer" value="2019-06-09" />
+			<p></p>
+			<button onclick="notic()">notic</button>
+			<button onclick="removeAll()">clear</button>
+		</div>
+
+		<script src="js/hg_dialog.js"></script>
+		<script type="text/javascript">
+			HgNotic.init({
+				onClick: function(data) {}
+			});
+
+			function dialog() {
+				HgDialog.init({
+					id: "hg-dialog",
+					type: document.getElementById("type").value,
+					closeStyle: document.getElementById("closeStyle").value,
+					outerHide: document.getElementById("outerHide").value,
+					okText: document.getElementById("okText").value,
+					cancelText: document.getElementById("cancelText").value,
+					width: document.getElementById("width").value,
+					height: document.getElementById("height").value,
+					title: document.getElementById("title").value,
+					showText: document.getElementById("showText").value,
+					okOnclik: function(val) {
+						HgDialog.hide();
+					}
+				});
+				HgDialog.show()
+			}
+
+			function notic() {
+				HgNotic.show(document.getElementById("noticTitle").value,
+					document.getElementById("noticShowText").value,
+					document.getElementById("footer").value);
+			}
+
+			function removeAll() {
+				HgNotic.removeAll();
+			}
+		</script>
+	</body>
+
+</html>

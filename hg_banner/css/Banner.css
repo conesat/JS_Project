@@ -1,0 +1,107 @@
+.hg_banner {
+	position: relative;
+	height: 360px;
+	margin: 0 auto;
+	min-width: 500px;
+	width: auto;
+	overflow: hidden;
+}
+
+.hg_banner_befor:hover {
+	background-image: url(../img/controller/befor1.png);
+}
+
+.hg_banner_next:hover {
+	background-image: url(../img/controller/next1.png);
+}
+
+.hg_banner_befor {
+	cursor: pointer;
+	position: relative;
+	float: left;
+	top: 140px;
+	width: 40px;
+	height: 40px;
+	background-image: url(../img/controller/befor.png);
+	background-size: cover;
+	z-index: 999;
+}
+
+.hg_banner_next {
+	cursor: pointer;
+	position: relative;
+	float: right;
+	top: 140px;
+	width: 40px;
+	height: 40px;
+	background-image: url(../img/controller/next.png);
+	background-size: cover;
+	z-index: 999;
+}
+
+.hg_banner_items {
+	cursor: pointer;
+	position: absolute;
+	margin: 0;
+	display: -webkit-box;
+	height: 100%;
+	width: 90%;
+}
+
+.hg_banner_item {
+	background-size: cover;
+	float: left;
+	overflow: hidden;
+	border-radius: 10px;
+	margin: 0 10px;
+	position: relative;
+	top: 60px;
+	height: 200px;
+	width: 400px;
+}
+
+.hg_banner_item_content {
+	height: 100%;
+	position: relative;
+	padding: 20px;
+	top: 220px;
+}
+
+.hg_banner_item_content h3 {
+	font-size: 22px;
+	font-family: '微软雅黑';
+	color: #fff;
+}
+
+.hg_banner_item_content label {
+	font-family: '微软雅黑';
+	color: #fff;
+}
+
+.hg_banner_item_content_detail {
+	font-family: '微软雅黑';
+	cursor: pointer;
+	position: absolute;
+	bottom: 70px;
+	line-height: 30px;
+	border-radius: 30px;
+	text-align: center;
+	width: 70px;
+	height: 30px;
+	color: #fff;
+	border: 2px #fff solid;
+}
+
+.hg_banner_item_content_detail:hover {
+	background: #fff;
+	color: #333;
+}
+
+.hg_banner_item_content_logo {
+	position: absolute;
+	bottom: 50px;
+	right: 10px;
+	width: 250px;
+	height: 68px;
+	background-size: cover;
+}

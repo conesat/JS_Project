@@ -1,0 +1,182 @@
+.gxut_news_content_item .item .img {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
+
+.gxut_news_content_item .item .show {
+	position: relative;
+	width: 470px;
+	height: 270px;
+	background: #eee0;
+	display: none;
+	margin-left: -30px;
+	transition: opacity 1s;
+}
+
+.gxut_news_content_item .item {
+	height: 270px;
+	overflow: hidden;
+	position: relative;
+}
+
+.gxut_news_content_item .item .item_img img {
+	width: 420px;
+	height: 270px;
+	transition: border-radius 0.5s;
+}
+
+.gxut_news_content_item .item .item_img {
+	position: absolute;
+	z-index: 99;
+}
+
+.gxut_news_content_item .item .show .content {
+	width: 100%;
+	height: 100%;
+	background: #439AC5;
+	position: absolute;
+	top: 0;
+	left: 40px;
+}
+
+.gxut_news_content_item .item .item_img .img h3 {
+	margin: 0;
+	position: absolute;
+	width: 400px;
+	color: #fff;
+	background: #00000082;
+	line-height: 30px;
+	top: 240px;
+	height: 30px;
+	padding: 0 10px;
+	transition: opacity 1s;
+	left: 0;
+}
+
+.gxut_news_content_item .item .show .jt {
+	position: relative;
+	top: 120px;
+	width: 0;
+	height: 0;
+	border-width: 20px;
+	border-style: solid;
+	border-color: transparent #439AC5 transparent transparent;
+}
+
+.gxut_news_content_item .item .items {
+	position: absolute;
+	left: 420px;
+	width: 480px;
+	height: 270px;
+}
+
+.gxut_news_content_item .item .items {
+	padding: 0 20px;
+}
+
+.gxut_news_content_item .item .items div p {
+	font-size: 18px;
+	margin: 5px auto;
+	color: #888;
+	padding: 10px;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.gxut_news_content_item .item .items div p:hover {
+	color: #439ac5;
+}
+
+.gxut_news_content_item .item .items div {
+	position: absolute;
+	height: 100%;
+	overflow-y: scroll;
+	width: 460px;
+}
+
+.gxut_news_content_item .item_img .img:hover .show {
+	display: block;
+}
+
+.gxut_news_content_item .item_img .img:hover h3 {
+	opacity: 0;
+	filter: Alpha(opacity=0)
+}
+
+.gxut_news_content_item .item_img .img:hover img {
+	border-radius: 20px;
+}
+
+.gxut_news_content_item .show .content {
+	color: #fff;
+}
+
+.gxut_news_content_item .show .content h4 {
+	margin: 10px;
+	color: #fff;
+	font-size: 20px;
+}
+
+.gxut_news_content_item .show .content p {
+	margin: 10px;
+}
+
+.gxut_news_content_item .show .content .news_more {
+	font-size: 14px;
+	position: absolute;
+	border: 1px #fff solid;
+	height: 30px;
+	width: 60px;
+	text-align: center;
+	line-height: 30px;
+	margin: 10px;
+	top: 220px;
+	transition: border-radius 0.5s;
+}
+
+.gxut_news_content_item .show .content .news_more a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.gxut_news_content_item .show .content .news_more:hover {
+	background: #fff;
+	border-radius: 20px;
+}
+
+.gxut_news_content_item .show .content .news_more:hover a {
+	color: #439ac5;
+}
+
+
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+
+.gxut_news_content_item .item .items div::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+	background-color: #f5f5f5;
+}
+
+
+/*定义滚动条的轨道，内阴影及圆角*/
+
+.gxut_news_content_item .item .items div::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	border-radius: 10px;
+	background-color: #f5f5f5;
+}
+
+
+/*定义滑块，内阴影及圆角*/
+
+.gxut_news_content_item .item .items div::-webkit-scrollbar-thumb {
+	/*width: 10px;*/
+	height: 20px;
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: #439ac5;
+}
