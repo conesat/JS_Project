@@ -282,13 +282,14 @@ var TableBuilder = {
 		for (var r = 0; r < TableBuilder.trs.length; r++) {
 			for (var c = 0; c < TableBuilder.trs[r].length; c++) {
 				var td = TableBuilder.tbody.childNodes[r].childNodes[c];
-				style.innerText += 'width:' + TableBuilder.tdWidth + 'px;';
-				style.innerText += 'height:' + TableBuilder.height + 'px;';
-				style.innerText += 'color:' + TableBuilder.textColor + ';';
-				style.innerText += 'background:' + TableBuilder.bgColor + ';';
-				style.innerText += 'border:' + TableBuilder.borderWidth + 'px solid ' + TableBuilder.borderColor + ';';
-				style.innerText += 'padding:' + TableBuilder.padingTB + 'px ' + TableBuilder.padingLR + 'px;';
-				style.innerText += 'font-size:16px';
+				TableBuilder.style.innerText += 'width:' + TableBuilder.tdWidth + 'px;';
+				TableBuilder.style.innerText += 'height:' + TableBuilder.height + 'px;';
+				TableBuilder.style.innerText += 'color:' + TableBuilder.textColor + ';';
+				TableBuilder.style.innerText += 'background:' + TableBuilder.bgColor + ';';
+				TableBuilder.style.innerText += 'border:' + TableBuilder.borderWidth + 'px solid ' + TableBuilder.borderColor +
+					';';
+				TableBuilder.style.innerText += 'padding:' + TableBuilder.padingTB + 'px ' + TableBuilder.padingLR + 'px;';
+				TableBuilder.style.innerText += 'font-size:16px';
 				if (td.style.background != TableBuilder.bgColor) {
 					TableBuilder.trs[r][c].bgColor = td.style.background;
 				}
@@ -777,11 +778,6 @@ var TableBuilder = {
 		var miniW = right / 4 - left / 4;
 		miniH = bottom - top;
 		var maxCols = 0;
-		/* 	for (var i = 1004; i < right; i += 4) {
-				imgData.data[425 * width + i] = 255;
-				imgData.data[425 * width + i + 1] = 0;
-				imgData.data[425 * width + i + 2] = 0;
-			} */
 		while (true) {
 			var td = getTd(x, y);
 			if (td.width < miniW) {
@@ -865,6 +861,7 @@ var TableBuilder = {
 					return i - x;
 				}
 			}
+			return rows;
 		}
 
 		for (var i = 0; i < arrtrs.length; i++) {
@@ -890,9 +887,6 @@ var TableBuilder = {
 				if (colspan == 0) {
 					colspan = 1;
 				}
-				if (rowspan == 0) {
-					rowspan = 1;
-				}
 
 				var rowspan;
 				if (arrtrs[i].length == 1) {
@@ -903,6 +897,10 @@ var TableBuilder = {
 						rowspan = getRows(i, colspan, rowspan);
 					}
 				}
+				if (rowspan == 0) {
+					rowspan = 1;
+				}
+
 				td.rowspan = rowspan;
 				td.colspan = colspan;
 
