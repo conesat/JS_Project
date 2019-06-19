@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+		<style>
+			body,html{
+				width: 100%;
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+				overflow: hidden;
+			}
+			input{
+				width: 100%;
+			}
+			button{
+				margin-top: 5px;
+			}
+			#table-div{
+				flex: 1;
+				border: 1px #eee solid;
+				margin: 20px;
+				padding: 80px;
+				text-align: center;
+				overflow: auto; 
+			}
+			
+			table{
+				table-layout:fixed;
+				background: #fff;
+				border:1px solid #eee;
+			}
+			table td,table th{
+				overflow:hidden;		
+				white-space:nowrap;		
+				text-overflow:ellipsis;
+			}
+			.selected{
+				background: #ddd!important;
+			}
+			.tdh-hover{
+				background: #ccc!important;;
+			}
+			.tool{
+				overflow-y: auto;
+				overflow-x: hidden;
+				height: 100%;
+				width: 120px;
+				padding: 0 20px;
+			}
+			.main{
+				display: flex;
+				flex-direction: row;
+				height: 100%;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="main">
+
+			<div id="table-div">
+
+				<div style="display: flex;">
+					<table id="table" rules=all>
+
+					</table>
+					<div id="table-opr-r" style="z-index: 99999;display: none;flex-direction: column;margin-left: 10px;">
+						<img onmousedown="unSuper()" onclick="addLine('r')" src="img/add.png" width="20px" height="20px" style="cursor: pointer;margin: 3px;" /><img
+						 onmousedown="unSuper()" onclick="deleteLine('r')" src="img/delete.png" width="20px" height="20px" style="cursor: pointer;margin: 3px;" /></div>
+				</div>
+
+				<div id="table-opr-c" style="z-index: 99999; display: none;margin-top: 10px;"><img onmousedown="unSuper()" onclick="addLine('c')"
+					 src="img/add.png" width="20px" height="20px" style="cursor: pointer;margin: 3px;" /><img onmousedown="unSuper()"
+					 onclick="deleteLine('c')" src="img/delete.png" width="20px" height="20px" style="cursor: pointer;margin: 3px;" /></div>
+
+				<div id="moveSelected" style="position: absolute;top: 0;left: 0;opacity:0.3;border:1px dashed #d9d9d9;background: #eee;"></div>
+				<div id="canvas"></div>
+			</div>
+
+			<div class="tool">
+				<div style="margin: 20px 0;">
+					<label for="columnNum">行数</label>
+					<input id="columnNum" value="5" type="number" />
+					<label for="rowNum">列数</label>
+					<input id="rowNum" value="5" type="number" />
+					<label for="tableWidth">表格总宽度</label>
+					<input id="tableWidth" placeholder="auto" />
+					<label for="rowWidth">格子宽度</label>
+					<input id="rowWidth" placeholder="auto" type="number" value="50" />
+					<label for="columnHeight">格子高度</label>
+					<input id="columnHeight" placeholder="auto" type="number" value="30" />
+					<label for="rowPadding">格子内边距</label>
+					<input id="rowPadding" placeholder="auto" value="0 0" />
+
+					<button onclick="init()">初始化</button>
+					<input accept="image/png,image/jpg,image/jpeg" type="file" onchange="loadImg(this)" />
+				</div>
+
+				<div id="edit" style="margin-top: 10px;display: none;">
+					<div style="margin-top: 10px;">
+						<label for="width">宽度</label>
+						<input id="width" value="" type="number" onchange="setTdWidth()" />
+						<label for="height">高度</label>
+						<input id="height" value="" type="number" onchange="setTdHeight()" />
+						<label for="width">左右padding</label>
+						<input id="width" value="" type="number" onchange="setTdPadding()" />
+						<label for="td-text">文本</label>
+						<textarea id="td-text" value="" type="text" onchange="setTdText()" style="width: 100%;"></textarea>
+
+						<label for="text-align">文本对齐</label>
+						<select id="text-align" style="margin-bottom: 5px;" onchange="setTextAlign()">
+							<option value="center">center</option>
+							<option value="left">left</option>
+						</select>
+						<br />
+						<label for="font-color">字体颜色</label>
+						<input id="font-color" value="" type="color" onchange="setFontColor()" />
+						<label for="bg-color">背景颜色</label>
+						<input id="bg-color" value="#ffffff" type="color" onchange="setBgColor()" />
+
+						<label for="td-bor-size">边框大小</label>
+						<input id="td-bor-size" value="1" type="number" onchange="setTdBorSize()" />
+						<label for="td-bor-color">边框颜色</label>
+						<input id="td-bor-color" value="#eeeeee" type="color" onchange="setTdBorColor()" />
+
+						<button onclick="toOne()">合并选择</button>
+						<button onclick="toTow('r')">上下拆分</button>
+						<button onclick="toTow('c')">左右拆分</button>
+						<button onclick="unSelect()">取消选择</button>
+						<button onclick="undo()">撤销</button>
+						<button onclick="redo()">重做</button>
+						<button onclick="getHtml()">获取html文本</button>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<div id="hg-dialog"></div>
+		<script src="js/resize_table.js"></script>
+		<script src="js/table_builder.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/hg_dialog.js"></script>
+		<script type="text/javascript">
+			HgDialog.init({
+				id: "hg-dialog",
+				type: 'show',
+				closeStyle: 'none',
+				outerHide: 'false',
+				title: '提示',
+				showText: '加载中...'
+			});
+			var div = document.getElementById('canvas');
+			var canvas = document.createElement("canvas");
+			var context = canvas.getContext("2d");
+
+			function loadImg(_this) {
+				HgDialog.show();
+				div.innerHTML = '';
+
+				var file = _this.files[0];
+				var img = new Image();
+				img.src = window.URL.createObjectURL(file);
+				img.onload = function() {
+					if (img.width > 3000 || img.height > 3000) {
+						alert('像素过大请降低像素重试！');
+						return;
+					}
+					canvas.width = img.width;
+					canvas.height = img.height;
+					context.drawImage(img, 0, 0); //0, 0参数画布上的坐标点，图片将会拷贝到这个地方
+					//div.appendChild(canvas)
+					imgData = TableBuilder.imgToTable(context.getImageData(0, 0, img.width, img.height));
+					initTable();
+					HgDialog.hide();
+					//context.putImageData(imgData,0,0)
+				}
+
+			}
+		</script>
+	</body>
+</html>
